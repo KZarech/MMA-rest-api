@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {WeightClassModule} from "./weight__class/weight__class.module";
+import {LocationModule} from "./location/location.module";
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import {WeightClassModule} from "./weight__class/weight__class.module";
           inject: [ConfigService],
       }),
       WeightClassModule,
+      LocationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
