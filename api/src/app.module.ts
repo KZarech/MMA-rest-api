@@ -6,6 +6,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {WeightClassModule} from "./weight__class/weight__class.module";
 import {LocationModule} from "./location/location.module";
 import {EventModule} from "./event/event.module";
+import {FighterModule} from "./fighter/fighter.module";
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import {EventModule} from "./event/event.module";
       WeightClassModule,
       LocationModule,
       EventModule,
+      FighterModule,
   ],
   controllers: [AppController],
   providers: [AppService],
