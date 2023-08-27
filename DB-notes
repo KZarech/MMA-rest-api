@@ -11,3 +11,6 @@ I created a separated table for locations to make the project more dynamic so in
   create countries table, add column country into locations and show all events in each country;
   make some tournaments with multiple locations, countries;
   etc.  
+
+Didn’t have time to handle locations, weight classes deletion 
+(they are used in another tables so simple deletion won’t do the job - some handlers should be done, but I really didn’t have time to do that properly)
