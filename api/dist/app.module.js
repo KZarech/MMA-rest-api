@@ -14,6 +14,7 @@ const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const weight__class_module_1 = require("./weight__class/weight__class.module");
 const location_module_1 = require("./location/location.module");
+const event_module_1 = require("./event/event.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -37,6 +38,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             weight__class_module_1.WeightClassModule,
             location_module_1.LocationModule,
+            event_module_1.EventModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
