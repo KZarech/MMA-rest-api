@@ -1,0 +1,13 @@
+I created a table for weight classes of fighters for easier management, dynamic classes and for possibility to add more info for class in the future.
+
+
+I was thinking about separating the fighters personal info and their stats (weight, wins, etc) into different tables,
+but decided not to do so due to the lack of time (in real project I would separate them so it will be easier to add new stats and some info for each fighter).
+
+
+I created a separated table for locations to make the project more dynamic so in future it will be possible to:
+  display all events for some specific location;
+  add some info about location;
+  create countries table, add column country into locations and show all events in each country;
+  make some tournaments with multiple locations, countries;
+  etc.  
