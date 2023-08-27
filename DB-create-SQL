@@ -1,30 +1,30 @@
-CREATE DATABASE mma
+CREATE DATABASE MMA
 
 
 
 
 CREATE TABLE weight__classes
 (
-    id SERIAL,
-    name VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
+	id SERIAL,
+	name VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id)
 );
 
 
 CREATE TABLE fighters
 (
-    id SERIAL,
-    name VARCHAR(100) NOT NULL,
-    nickname VARCHAR(50),
-    nationality VARCHAR(100),
-    birth_date date NOT NULL,
-    weight INT NOT NULL,
-    weight_class INT REFERENCES weight__classes(id) NOT NULL,
-    wins INT DEFAULT 0,
-    losses INT DEFAULT 0,
-    knockouts INT DEFAULT 0,
-    submissions INT DEFAULT 0,
-    PRIMARY KEY (id)
+	id SERIAL,
+	name VARCHAR(100) NOT NULL,
+	nickname VARCHAR(50),
+	nationality VARCHAR(100),
+	birth_date date NOT NULL,
+	weight INT NOT NULL,
+	weight_class INT REFERENCES weight__classes(id) NOT NULL,
+	wins INT DEFAULT 0,
+	losses INT DEFAULT 0,
+	knockouts INT DEFAULT 0,
+	submissions INT DEFAULT 0,
+	PRIMARY KEY (id)
 );
 
 
@@ -34,61 +34,51 @@ ADD COLUMN status SMALLINT DEFAULT 0;
 COMMENT ON table fighters IS 'career status of a fighter, 0 - active, 1 - retired; some other states can be added';
 
 
-CREATE TABLE fights
-(
-    id SERIAL,
-    name VARCHAR(100) NOT NULL,
-    opponent_one INT REFERENCES fighters(id) NOT NULL,
-    opponent_two INT REFERENCES fighters(id) NOT NULL,
-    date date NOT NULL,
-    winner INT REFERENCES fighters(id),
-    PRIMARY KEY (id)
-);
-
-ALTER TABLE fights
-ADD COLUMN state SMALLINT DEFAULT 0 NOT NULL;
-ALTER TABLE fights
-ADD COLUMN weight_class INT REFERENCES weight__classes(id) NOT NULL;
-
-COMMENT ON TABLE fights
-IS 'states of fights: 0 - did not happen; 1 - finished; 2 - canceled; 3 - postponed';
-
-
-
-
 CREATE TABLE locations
 (
-    id SERIAL,
-    name VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
+	id SERIAL,
+	name VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id)
 );
 
 
 CREATE TABLE events
 (
-    id SERIAL,
-    name VARCHAR(100) NOT NULL,
-    location INT REFERENCES locations(id) NOT NULL,
-    date date NOT NULL,
-    description TEXT,
-    PRIMARY KEY (id)
+	id SERIAL,
+	name VARCHAR(100) NOT NULL,
+	location INT REFERENCES locations(id) NOT NULL,
+	date date NOT NULL,
+	description TEXT,
+	PRIMARY KEY (id)
 );
 
 
-CREATE TABLE events__fights
+CREATE TABLE fights
 (
-    id SERIAL,
-    event INT  REFERENCES events(id) NOT NULL,
-    fight INT REFERENCES fights(id) NOT NULL,
-    PRIMARY KEY (id)
+	id SERIAL,
+	name VARCHAR(100) NOT NULL,
+	opponent_one INT REFERENCES fighters(id) NOT NULL,
+	opponent_two INT REFERENCES fighters(id) NOT NULL,
+	winner INT REFERENCES fighters(id),
+	state SMALLINT DEFAULT 0 NOT NULL,
+	weight_class INT REFERENCES weight__classes(id) NOT NULL,
+	event INT REFERENCES events(id) NOT NULL,
+"time" time with time zone,
+	PRIMARY KEY (id)
 );
+
+COMMENT ON TABLE fights
+IS 'states of fights: 0 - did not happen; 1 - finished; 2 - canceled; 3 - postponed';
 
 
 CREATE TABLE ranking
 (
-    id SERIAL,
-    fighter INT REFERENCES fighters(id) NOT NULL,
-    weight_class INT REFERENCES weight__classes(id) NOT NULL,
-    rank INT NOT NULL,
-    PRIMARY KEY (id)
+	id SERIAL,
+	fighter INT REFERENCES fighters(id) NOT NULL,
+	weight_class INT REFERENCES weight__classes(id) NOT NULL,
+	rank INT NOT NULL,
+	PRIMARY KEY (id)
 );
+
+
+
