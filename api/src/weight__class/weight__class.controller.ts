@@ -7,23 +7,23 @@ export class WeightClassController {
     constructor(private readonly weightClassService: WeightClassService) {}
 
     @Post()
-    create(@Body() dto: CreateWeightClassDto) {
-        return this.weightClassService.create(dto)
+    createClass(@Body() dto: CreateWeightClassDto) {
+        return this.weightClassService.createClass(dto)
     }
 
     @Get()
-    getAll() {
-        return this.weightClassService.getAll()
+    getClasses() {
+        return this.weightClassService.getClasses()
     }
 
     @Get(':id')
-    getOne(@Param('id', ) id: number) {
-        return this.weightClassService.getOne(id)
+    getClass(@Param('id', ) id: number) {
+        return this.weightClassService.getClass(id)
     }
 
     @Put(':id')
-    update(@Param('id') id: number, @Body() dto: CreateWeightClassDto) {
-        return this.weightClassService.update(id ,dto)
+    updateClass(@Param('id') id: number, @Body() dto: CreateWeightClassDto) {
+        return this.weightClassService.updateClass(id ,dto)
     }
 
     @Delete(':id')

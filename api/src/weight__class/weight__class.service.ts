@@ -10,21 +10,21 @@ export class WeightClassService {
 
     }
 
-    async create(dto: CreateWeightClassDto) {
+    async createClass(dto: CreateWeightClassDto) {
         const weightClass = this.weightRepository.create(dto)
 
         return await this.weightRepository.save(weightClass)
     }
 
-    getAll() {
+    getClasses() {
         return this.weightRepository.find()
     }
 
-    getOne(id: number) {
+    getClass(id: number) {
         return this.weightRepository.find({where: {id}})
     }
 
-    async update(id: number, dto: CreateWeightClassDto) {
+    async updateClass(id: number, dto: CreateWeightClassDto) {
         const weightClass = await this.weightRepository.findOne({where: {id}})
 
         const updateData = Object.assign(weightClass, dto)
@@ -33,7 +33,7 @@ export class WeightClassService {
         return updateData
     }
 
-    async deleteClass (id: number) {
+    async deleteClass(id: number) {
         await this.weightRepository.delete({id})
         return {id: id}
     }

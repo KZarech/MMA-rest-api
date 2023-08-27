@@ -1,7 +1,5 @@
-import {Column, Entity, JoinColumn, OneToMany, ManyToOne, PrimaryGeneratedColumn, JoinTable} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {Location} from "../../location/entities/location.entity";
-import {Fight} from "../../fight/entities/fight.enity";
-import {EventFight} from "../../event__fight/entities/event_fight.entity";
 
 @Entity('events')
 export class Event {
@@ -20,7 +18,4 @@ export class Event {
 
     @Column({type: 'text', nullable: true})
     description: string;
-
-    @OneToMany(() => EventFight, (eventFight) => eventFight.event, { lazy: true })
-    eventFights: EventFight[];
 }

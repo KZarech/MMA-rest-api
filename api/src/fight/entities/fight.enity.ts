@@ -1,7 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, ManyToMany, JoinTable, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
 import {Fighter} from "../../fighter/entities/fighter.entity";
 import {WeightClass} from "../../weight__class/entities/weight__class.entity";
-import {EventFight} from "../../event__fight/entities/event_fight.entity";
+import {Event} from "../../event/entities/event.entity";
 
 @Entity('fights')
 
@@ -20,8 +20,12 @@ export class Fight {
     @JoinColumn({ name: 'opponent_two' })
     opponent_two: Fighter;
 
-    @Column({ type: 'date', nullable: false })
-    date: Date;
+    @Column({ type: 'time with time zone', nullable: false })
+    time: Date;
+
+    @ManyToOne(() => Event, (event) => event.id, { lazy: true })
+    @JoinColumn({ name: 'event' })
+    event: Event;
 
     @ManyToOne(() => Fighter, (fighter) => fighter.id, { lazy: true })
     @JoinColumn({ name: 'winner' })
@@ -33,8 +37,4 @@ export class Fight {
     @ManyToOne(() => WeightClass, (weight) => weight.id, { lazy: true })
     @JoinColumn({ name: 'weight_class' })
     weight_class: number;
-
-    // TODO: fix event_fight.entity
-    // @OneToMany(() => EventFight, (eventFight) => eventFight.fight, { lazy: true })
-    // eventFights: EventFight[];
 }
