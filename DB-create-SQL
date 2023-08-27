@@ -82,3 +82,17 @@ CREATE TABLE ranking
 
 
 
+CREATE OR REPLACE FUNCTION add_into_ranking()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO ranking (fighter, weight_class, rank)
+    VALUES (NEW.id, NEW.weight_class, COALESCE((SELECT MAX(rank) + 1 FROM ranking WHERE weight_class = NEW.weight_class), 1));
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER after_insert_fighter
+AFTER INSERT ON fighters
+FOR EACH ROW
+EXECUTE FUNCTION add_into_ranking();
