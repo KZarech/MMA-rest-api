@@ -7,6 +7,7 @@ import {WeightClassModule} from "./weight__class/weight__class.module";
 import {LocationModule} from "./location/location.module";
 import {EventModule} from "./event/event.module";
 import {FighterModule} from "./fighter/fighter.module";
+import {FightModule} from "./fight/fight.module";
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import {FighterModule} from "./fighter/fighter.module";
       LocationModule,
       EventModule,
       FighterModule,
+      FightModule,
   ],
   controllers: [AppController],
   providers: [AppService],

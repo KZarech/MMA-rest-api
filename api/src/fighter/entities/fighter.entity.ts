@@ -21,7 +21,7 @@ export class Fighter {
     @Column({ nullable: false })
     weight: number;
 
-    @ManyToOne(() => WeightClass,  (weightClass) => weightClass.id, { lazy: true, nullable: false })
+    @ManyToOne(() => WeightClass,  (weightClass) => weightClass.id, { lazy: false, nullable: false })
     @JoinColumn({name: 'weight_class'})
     weight_class: WeightClass;
 

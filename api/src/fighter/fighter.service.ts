@@ -3,7 +3,7 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm"
 import {Fighter} from "./entities/fighter.entity";
 import {CreateFighterDto} from "./dtos/create-fighter";
-import {EditFighterDto} from "../event/dtos/edit-fighter";
+import {EditFighterDto} from "./dtos/edit-fighter";
 import {WeightClass} from "../weight__class/entities/weight__class.entity";
 
 @Injectable()

@@ -1,7 +1,7 @@
 import {Body, Controller, Get, Param, Post, Put, Delete, Query} from "@nestjs/common";
 import {FighterService} from "./fighter.service";
 import {CreateFighterDto} from "./dtos/create-fighter";
-import {EditFighterDto} from "../event/dtos/edit-fighter";
+import {EditFighterDto} from "./dtos/edit-fighter";
 
 @Controller('fighters')
 export class FighterController {
