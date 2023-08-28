@@ -1,7 +1,8 @@
-import {Body, Controller, Get, Param, Post, Put, Delete, Query} from "@nestjs/common";
+import {Body, Controller, Get, Param, Post, Put, Delete, Query, Patch} from "@nestjs/common";
 import {FightService} from "./fight.service";
 import {CreateFightDto} from "./dtos/create-fight";
 import {EditFightDto} from "./dtos/edit-fight";
+import {FinishFightDto} from "./dtos/finish-fight";
 
 @Controller('fights')
 export class FightController {
@@ -31,5 +32,10 @@ export class FightController {
     @Delete(':id')
     deleteFight(@Param('id') id: number) {
         return this.fightService.deleteFight(id)
+    }
+
+    @Patch('finish')
+    finishFight(@Body() dto: FinishFightDto) {
+        return this.fightService.finishFight(dto.fightId, dto.winnerId)
     }
 }
