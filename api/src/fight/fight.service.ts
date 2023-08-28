@@ -75,14 +75,6 @@ export class FightService {
     async updateFight(id: number, dto: EditFightDto) {
         const fight = await this.fightRepository.findOne({where: {id}})
 
-        // if(dto.weight_class) {
-        //     const id = dto.weight_class
-        //     const weightClass = await this.weightClassRepository.findOne({where: {id}})
-        //     if(weightClass)
-        //         fight.weight_class = weightClass
-        //     delete dto.weight_class
-        // }
-
         const updateData = Object.assign(
             fight,
             dto

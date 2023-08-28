@@ -26,9 +26,13 @@ export class EventService {
         return this.eventRepository.find()
     }
 
-    getEvent(id: number) {
+    async getEvent(id: number) {
         // TODO: here - load info of fights related to event (info of fight, also fighters names)
-        return this.eventRepository.find({where: {id}})
+        const query = this.eventRepository.createQueryBuilder('event')
+            .leftJoinAndSelect('event.location', 'location')
+            .where('event.id = :event', {event: id})
+
+        return query.getOne()
     }
 
     async updateEvent(id: number, dto: CreateEventDto) {
