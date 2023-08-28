@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
-const weight__class_module_1 = require("./weight__class/weight__class.module");
 const location_module_1 = require("./location/location.module");
 const event_module_1 = require("./event/event.module");
 const fighter_module_1 = require("./fighter/fighter.module");
 const fight_module_1 = require("./fight/fight.module");
 const ranking_module_1 = require("./ranking/ranking.module");
+const app_controller_1 = require("./app.controller");
+const app_service_1 = require("./app.service");
+const weight__class_module_1 = require("./weight__class/weight__class.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
