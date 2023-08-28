@@ -17,6 +17,7 @@ const location_module_1 = require("./location/location.module");
 const event_module_1 = require("./event/event.module");
 const fighter_module_1 = require("./fighter/fighter.module");
 const fight_module_1 = require("./fight/fight.module");
+const ranking_module_1 = require("./ranking/ranking.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -43,6 +44,7 @@ exports.AppModule = AppModule = __decorate([
             event_module_1.EventModule,
             fighter_module_1.FighterModule,
             fight_module_1.FightModule,
+            ranking_module_1.RankingModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
